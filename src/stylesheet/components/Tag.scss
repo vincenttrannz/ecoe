@@ -1,0 +1,8 @@
+.tag {
+  padding: 5px 10px;
+  background-color: $colour-two;
+  font-size: clamp(12px, 1vw, 14px);
+  color: #fff;
+  border-radius: 6px;
+  width: fit-content;
+}

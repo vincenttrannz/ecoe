@@ -1,0 +1,30 @@
+.navbar {
+  &__wrapper {
+    height: 80px;
+    box-shadow: 0 -12px 24px 6px #96969650;
+    display: flex;
+    align-items: center;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0 10px;
+      }
+    }
+    .navi-links-container {
+      display: flex;
+      gap: 0 15px;
+    }
+  }
+  &__left-container, &__right-container {
+    display: flex;
+    gap: 0 60px;
+    align-items: center;
+  }
+}
