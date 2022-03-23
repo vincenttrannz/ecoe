@@ -48,11 +48,11 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 This is the main React component use for rendering the site. The component is currently mounting NavBar, Card and SideNav components.
 
 The website includes 4 other main components and 1 json data:
-* [Card.jsx](#card)
-* [NavBar.jsx](#navbar)
-* [SideNav.jsx](#sidenav)
-* [Tag.jsx](#tag)
-* [cards.json](#cardData)
+* [Card.jsx](#cardjsx)
+* [NavBar.jsx](#navbarjsx)
+* [SideNav.jsx](#sidenavjsx)
+* [Tag.jsx](#tagjsx)
+* [cards.json](#cardsjson)
 
 ### Card.jsx
 
