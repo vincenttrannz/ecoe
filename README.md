@@ -39,7 +39,13 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-# EcoE
+# 1. EcoE
+
+The design is inspiring from the color of Grammarly. I want to create a layout of something pure Eco friendly green energy but also at the same time professionally and elegant.
+
+Here is the link to Figma design file:
+[https://www.figma.com/file/98AcufhAa3CZ6YhQrC6VXM/Flick?node-id=0%3A1]
+
 
 ## App.jsx
 
@@ -383,4 +389,110 @@ Card data format for all the content on the card.
     "link": "string"
   }
 ]
+```
+
+# 2. Written Questions:
+
+```js
+  const plans = [
+    {name: 'Flat', variableRate: '0.234', dayRate: '0.5', startDate: '2021-01-01', endDate: '2025-01-01', id: '6'},
+    {name: 'Off Peak', variableRate: '0.226', dayRate: '0.5', startDate: '2021-01-01', endDate: '2025-01-01', id: '5'},
+    {name: 'Business', variableRate: '0.130', dayRate: '1.0', startDate: '2021-01-01', endDate: '2025-01-01', id: '4'},
+    {name: 'Wholesale', variableRate: '0.301', dayRate: '0.5', startDate: '2021-01-01', endDate: '2025-01-01', id: '3'},
+    {name: 'Flat', variableRate: '0.264', dayRate: '0.5', startDate: '2020-01-01', endDate: '2021-01-01', id: '2'},
+    {name: 'Off Peak', variableRate: '0.209', dayRate: '0.5', startDate: '2020-01-01', endDate: '2021-01-01', id: '1'}
+  ]
+```
+
+ 1. Return an array of plans excluding any that have end dates in the past, these are the active plans.
+
+ SOLUTION:
+ In order to filter the plan that currently active, we need to pull out all the plans in the past. 
+ In order to do this, I will compare the today timestamp with all the endDate timestamp from all the plans. If plan timestamp larger than today timestamp. Then it is active plan.
+
+```js 
+  const today = new Date().toISOString().split('T')[0];
+  const TodayTimeStamp = Date.parse(today);
+  const ActivePlans = plans.filter(plan => {
+    const PlanTimestamp = Date.parse(plan.endDate);
+    if(PlanTimestamp > TodayTimeStamp) return plan;
+  })
+```
+
+2. Return the active plans ordered by their name alphabetically.
+
+SOLUTION:
+Using Array.sort function to arrange the array of all the plan. First, I created a compare function where if first plan name alphabetically before second plan name, put it at the begin of an array. The function will keep doing this until it reach the end of the array.
+
+```js
+  // Sort the Active plan by alphabetically
+  function compare( a, b ) {
+    if ( a.name < b.name ){
+      return -1;
+    }
+  }
+  ActivePlans.sort(compare)
+  console.log("Active plans:", ActivePlans);
+```
+
+3. Return the rate of the active Off Peak plan.
+
+SOLUTION
+Using Array.map function to return the "Off Peak" plan and filter all the "undefined".
+
+```js
+  // Return rate of Off Peak plans
+  const OffPeakRate = ActivePlans.map(plan => {
+    if(plan.name == "Off Peak") return {
+      name: plan.name,
+      variableRate: plan.variableRate,
+      dayRate: plan.dayRate
+    };
+  }).filter(rate => rate !== undefined);
+  console.log("Off Peak rate:", OffPeakRate);
+```
+
+4. Return the cost for a customer for a 7 day period where they use 29kWh of electricity on the current active Flat plan.
+
+SOLUTION:
+There are 2 costs that Flat user need be paid which are Variable charge and Fixed charge.
+By finding the Flat plan within the ActivePlans array, then calculate the cost per day for Variable and Fixed by getting the rate * 29 and round up to 2 decimal points.
+
+```js
+  /**
+   * The variable rate for current active Flat plan: 0.234c/kWh
+   * In 7 days, the customer consumed 29kWh
+   * Same for the day rate logic
+   *  */ 
+  const ActiveFlatPlan = ActivePlans.find(plan => plan.name == "Flat")
+  const VariableFlatCostPerDay = (ActiveFlatPlan.variableRate * 29).toFixed(2);
+  const FixedFlatCostPerDay = (ActiveFlatPlan.dayRate * 7).toFixed(2);
+  console.log("Variable charge per day:", VariableFlatCostPerDay);
+  console.log("Fixed charge per day:", FixedFlatCostPerDay);
+```
+
+5. Return which plan a customer will pay the least amount for 7 days and 29kWh of electricity used.
+
+SOLUTION:
+In order to check for the least amount for consumer on electricity within 7 days of usage. I have map the ActivePlans array to return the name of the plan and the cost of 29kWh.
+
+After that, using the RequiredCostPerPlan.reduce function to get the closest value to 0 of all every plan cost.
+
+```js
+  function CheckActivePlansCheapestCost(rate){
+    const RequiredCostPerPlan = ActivePlans.map(plan => {
+      return {
+        name: plan.name,
+        cost: (plan[rate] * 29).toFixed(2)
+      }
+    });
+
+    const CheapestCost = RequiredCostPerPlan.reduce(function(prev, curr) {
+      return (Math.abs(curr.cost - 0) < Math.abs(prev.cost - 0) ? curr : prev);
+    });
+    return CheapestCost;
+  };
+  // Call the function
+  CheckActivePlansCheapestCost("variableRate");
+  CheckActivePlansCheapestCost("dayRate");
 ```
