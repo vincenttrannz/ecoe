@@ -1,5 +1,7 @@
 .navbar {
   &__wrapper {
+    position: relative;
+    z-index: 9;
     height: 80px;
     box-shadow: 0 -12px 24px 6px #96969650;
     display: flex;
@@ -26,5 +28,56 @@
     display: flex;
     gap: 0 60px;
     align-items: center;
+  }
+}
+
+.dropdown, .hamburger {
+  display: none;
+}
+
+@media (max-width: $mobile-screen-width) {
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+  .navbar {
+    &__wrapper {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      top: 0;
+      width: 100%;
+      background-color: #fff;
+    }
+    &__right-container {
+      display: none;
+    }
+    &__container {
+      .navi-links-container {
+        display: none;
+      }
+    }
+  }
+  .dropdown {
+    z-index: 9;
+    display: block;
+    position: absolute;
+    top: 80px;
+    background-color: #fff;
+    width: 100%;
+    padding: 30px 0;
+    box-shadow: 0 8px 10px 0 #96969650;
+    &.hidden {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .navi-links-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 20px 0;
+    }
   }
 }

@@ -18,9 +18,9 @@ export default function Card({
           </div>
           <h3>{title}</h3>
           <p dangerouslySetInnerHTML={{__html: content}}></p>
-          <a className="read-more" href={link}>
+          <span className="read-more" href={link}>
             Read more
-          </a>
+          </span>
         </div>
       </a>
     </div>

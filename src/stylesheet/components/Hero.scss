@@ -1,10 +1,15 @@
 .hero {
   padding: 60px 0;
   background-color: $colour-one;
-  box-shadow: 0 10px 24px 6px #96969650;
   &__container {
     display: flex;
     justify-content: center;
     color: #fff;
+  }
+}
+
+@media (max-width: $mobile-screen-width) {
+  .hero {
+    margin-top: 80px;
   }
 }

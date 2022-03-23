@@ -50,3 +50,12 @@
     }
   }
 }
+
+@media (max-width: $mobile-screen-width) {
+  .cards-container {
+    .card-skin {
+      margin-top: -95px;
+      padding-top: 95px;
+    }
+  }
+}
