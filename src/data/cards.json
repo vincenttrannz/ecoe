@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "imgPath": "/img/thumbnail-1.jpg",
+    "title": "Title 01",
+    "tags": ["Articles", "Building", "Eco"],
+    "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nesciunt voluptatibus aliquam iure aspernatur excepturi vel, quisquam dolore perferendis, consequuntur unde iusto rem nihil aperiam sint provident, hic aut? Odit?",
+    "link": "#"
+  },
+  {
+    "id": 2,
+    "imgPath": "/img/thumbnail-2.jpg",
+    "title": "Title 02",
+    "tags": ["Green", "Tools"],
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam commodi asperiores quaerat animi! Adipisci repellat corporis libero ut nesciunt odit ipsum quibusdam placeat soluta atque. Voluptate distinctio corrupti facere iste!",
+    "link": "#"
+  },
+  {
+    "id": 3,
+    "imgPath": "/img/thumbnail-3.jpg",
+    "title": "Title 03",
+    "tags": ["Health", "Program", "Computer"],
+    "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nesciunt voluptatibus aliquam iure aspernatur excepturi vel, quisquam dolore perferendis, consequuntur unde iusto rem nihil aperiam sint provident, hic aut? Odit?",
+    "link": "#"
+  },
+  {
+    "id": 4,
+    "imgPath": "/img/thumbnail-4.jpg",
+    "title": "Title 04",
+    "tags": ["Video", "Media", "Entertainment"],
+    "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum consequuntur deleniti vero nobis delectus aut qui, odio veniam velit neque temporibus possimus officia consectetur atque reprehenderit suscipit dignissimos ipsa sequi.",
+    "link": "#"
+  },
+  {
+    "id": 5,
+    "imgPath": "/img/thumbnail-5.jpg",
+    "title": "Title 05",
+    "tags": ["Architecture"],
+    "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo ad beatae modi ab quam deserunt delectus nostrum, corrupti illum magni non iusto, fugit nihil? Exercitationem omnis quae error culpa eius.",
+    "link": "#"
+  }
+]

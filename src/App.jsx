@@ -1,6 +1,8 @@
 import React from 'react';
+import CardData from './data/cards.json'
 import NavBar from './components/NavBar';
 import Card from './components/Card';
+import SideNav from './components/SideNav';
 
 export default function App() {
   return (
@@ -14,28 +16,22 @@ export default function App() {
       <div className='container main'>
         <div className='main__container'>
           <div className='cards-container'> 
-            <Card
-              imgPath={"/img/thumbnail-1.jpg"}
-              title={`Title 01`}
-              tags={["Articles", "Building", "Eco"]}
-              content={`
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nesciunt voluptatibus aliquam iure aspernatur excepturi vel, quisquam dolore perferendis, consequuntur unde iusto rem nihil aperiam sint provident, hic aut? Odit?
-              `}
-              link={"/"}
-            />
-            <Card
-              imgPath={"/img/thumbnail-2.jpg"}
-              title={`Title 02`}
-              tags={["Green", "Tools"]}
-              content={`
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nesciunt voluptatibus aliquam iure aspernatur excepturi vel, quisquam dolore perferendis, consequuntur unde iusto rem nihil aperiam sint provident, hic aut? Odit? Pariatur nesciunt voluptatibus aliquam iure aspernatur excepturi vel, quisquam dolore perferendis.
-              `}
-              link={"/"}
-            />
+            {
+              CardData.map((data, index) => {
+                return (
+                  <Card
+                    key={index}
+                    imgPath={data.imgPath}
+                    title={data.title}
+                    tags={data.tags}
+                    content={data.content}
+                    link={data.link}
+                  />
+                )
+              })
+            }
           </div>
-          <div className='sticky-nav-container'>
-            Sticky Nav
-          </div>
+          <SideNav SidenavData={CardData} SidenavTitle={"Side Navigation"}/>
         </div>
       </div>
     </>

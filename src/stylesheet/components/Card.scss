@@ -4,7 +4,13 @@
   grid-template-columns: 1fr;
   gap: 30px 0;
   width: 100%;
+  .card-skin {
+    position: relative;
+    margin-top: -30px;
+    padding-top: 30px;
+  }
   .card {
+    transition: box-shadow 0.2s ease;
     display: grid;
     grid-template-rows: 1fr auto;
     gap: 15px;
@@ -38,6 +44,9 @@
       .read-more {
         color: $colour-two;
       }
+    }
+    &:hover {
+      box-shadow: 0 0 12px 6px #96969650;
     }
   }
 }

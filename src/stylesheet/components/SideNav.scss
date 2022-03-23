@@ -1,0 +1,29 @@
+.sidenav {
+  position: relative;
+  &-container {
+    position: sticky;
+    top: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  &-link {
+    transition: all ease 0.2s;
+    display: flex;
+    gap: 0 30px;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-shadow: 0 0 6px 1px #96969650;
+    border-radius: 12px;
+    .icon {
+      transition: all ease 0.1s;
+    }
+    &:hover {
+      color: $colour-two;
+      box-shadow: 0 0 6px 3px #96969650;
+      .icon {
+        transform: translateX(5px);
+      }
+    }
+  }
+}

@@ -7,19 +7,19 @@ export default function NavBar() {
       <nav className='container'>
         <div className='navbar__container'>
           <div className='navbar__left-container'>
-            <div className='logo__container'>
+            <a className='logo__container' href='#'>
               <Logo className='icon'/>
               <h5><span className='font-colour-one'>E</span>co<span className='font-colour-one'>E</span></h5>
-            </div>
+            </a>
             <div className='navi-links-container'>
-              <a href='/'>Home</a>
-              <a href='/'>About</a>
-              <a href='/'>News</a>
-              <a href='/'>Contact</a>
+              <a className='nav-link' href='#'>Home</a>
+              <a className='nav-link' href='#'>About</a>
+              <a className='nav-link' href='#'>News</a>
+              <a className='nav-link' href='#'>Contact</a>
             </div>
           </div>
           <div className='navbar__right-container'>
-            <a href='/'>Login</a>
+            <a className='nav-link' href='#'>Login</a>
             <button className='btn btn-primary'>
               Get Started
             </button>
