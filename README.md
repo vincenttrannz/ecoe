@@ -41,9 +41,7 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 
 # EcoE
 
-## 1.Components
-
-### App.jsx
+## App.jsx
 
 This is the main React component use for rendering the site. The component is currently mounting NavBar, Card and SideNav components.
 
@@ -54,7 +52,49 @@ The website includes 4 other main components and 1 json data:
 * [Tag.jsx](#tagjsx)
 * [cards.json](#cardsjson)
 
-### Card.jsx
+```jsx
+import React from 'react';
+import CardData from './data/cards.json'
+import NavBar from './components/NavBar';
+import Card from './components/Card';
+import SideNav from './components/SideNav';
+
+export default function App() {
+  return (
+    <>
+      <NavBar/>
+      <div className='hero'>
+        <div className='container hero__container'>
+          <h1>WELCOME TO ECO ENERGY</h1>
+        </div>
+      </div>
+      <div className='container main'>
+        <div className='main__container'>
+          <div className='cards-container'> 
+            {
+              CardData.map((data, index) => {
+                return (
+                  <Card
+                    key={index}
+                    imgPath={data.imgPath}
+                    title={data.title}
+                    tags={data.tags}
+                    content={data.content}
+                    link={data.link}
+                  />
+                )
+              })
+            }
+          </div>
+          <SideNav SidenavData={CardData} SidenavTitle={"Side Navigation"}/>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+## Card.jsx
 
 The Card component use for rendering each of the article card. It required 5 props:
 * imgPath: The path to article card image (currently image is storing in the public folder).
@@ -115,7 +155,7 @@ export default function Card({
   * `.card__content-container` is a grid that wrap the content of the card.
   * `.card__tags-container` is a flex that wrap all the card tags.
 
-### NavBar.jsx
+## NavBar.jsx
 
 NavBar component is for the top navigation. The responsive layout are:
 * Desktop - Menu at the top of the page:
@@ -233,7 +273,14 @@ export default function NavBar() {
   * `.navbar__left-container` & `.navbar__right-container` are two "flex" block that wrap all the links and Get Started button.
   * `.dropdown` & `.hamburger` are two items that show only in mobile.
 
-### SideNav.jsx
+## SideNav.jsx
+
+SideNav is the component for internal navigate to different card. The responsive layout are:
+  * Desktop - Sticky sidebar navigation contains all the link of the card title. On click, it will take you to the different card.
+  * Mobile - Positioning on top of all the cards and function as an accordion dropdown menu that contains all the links.
+  * Component props are:
+    - SidenavTitle - This is props passing to the component to display the title of the sticky side menu.
+    - SidenavData - This is the same data that shares with the Card component.
 
 ```jsx
 import React, { useState } from "react";
@@ -290,7 +337,13 @@ export default function SideNav({
 }
 ```
 
-### Tag.jsx
+  * `.sidenav-container` is a sticky block that contains the menu container and all the links.
+  * `.sidenav-menu` is a "grid" block contains all the links.
+  * `.sidenav-link` is a "flex" block contains the title and the arrow icon.
+
+## Tag.jsx
+
+Tag component is simply a "block" component that render the title each of the tag within the article card.
 
 ```jsx
 import React from "react";
